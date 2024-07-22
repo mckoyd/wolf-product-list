@@ -78,7 +78,10 @@ const config: Configuration = {
       template: "./public/index.html",
     }),
     new CopyPlugin({
-      patterns: [{ from: "./public/assets", to: "assets" }],
+      patterns: [
+        { from: "./public/assets", to: "assets" },
+        { from: "./public/avatar.ico", to: "" },
+      ],
     }),
   ],
 };
