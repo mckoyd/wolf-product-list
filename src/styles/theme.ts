@@ -30,14 +30,14 @@ declare module "@mui/material/styles" {
   }
 }
 
-const red = "#C73B0F";
-const rose900 = "#260F08";
-const rose500 = "#87635A";
-const rose400 = "#AD8A85";
-const rose300 = "#CAAFA7";
-const rose100 = "#F5EEEC";
-const rose50 = "#FCF8F6";
-const green = "#1EA575";
+export const red = "#C73B0F";
+export const rose900 = "#260F08";
+export const rose500 = "#87635A";
+export const rose400 = "#AD8A85";
+export const rose300 = "#CAAFA7";
+export const rose100 = "#F5EEEC";
+export const rose50 = "#FCF8F6";
+export const green = "#1EA575";
 
 const theme: Theme = createTheme({
   palette: {
