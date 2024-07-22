@@ -2,6 +2,13 @@ import { CSSProperties } from "react";
 import { tss } from "tss-react/mui";
 
 export const useLandingStyles = tss.create(({ theme }) => ({
+  largeLandingContainer: {
+    [theme.breakpoints.up("lg")]: {
+      padding: "5.5em 2.5em",
+      justifyContent: "center",
+      gap: "2em",
+    },
+  },
   landingContainer: {
     display: "flex",
     flexDirection: "column",
@@ -9,6 +16,9 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     gap: "2em",
     [theme.breakpoints.up("sm")]: {
       padding: "2.5em",
+    },
+    [theme.breakpoints.up("lg")]: {
+      padding: "0",
     },
   },
   titleContainer: {
@@ -35,6 +45,9 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     gap: "2em",
     background: theme.palette.common.white,
     borderRadius: "0.75em",
+    [theme.breakpoints.up("lg")]: {
+      height: "18.75em",
+    },
   },
   cartTitle: {
     ...(theme.typography.textPreset2 as CSSProperties),
