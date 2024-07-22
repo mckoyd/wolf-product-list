@@ -7,6 +7,9 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     flexDirection: "column",
     padding: "1.5em",
     gap: "2em",
+    [theme.breakpoints.up("sm")]: {
+      padding: "2.5em",
+    },
   },
   titleContainer: {
     justifySelf: "flex-start",
@@ -19,6 +22,11 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     gap: "1.5em",
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+    },
   },
   cartContainer: {
     display: "flex",

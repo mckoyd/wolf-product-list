@@ -8,7 +8,11 @@ import { ReactComponent as AddToCartIcon } from "../assets/images/icon-add-to-ca
 const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
   const { classes } = useProductStyles();
   return (
-    <Grid container flexDirection={"column"}>
+    <Grid
+      container
+      flexDirection={"column"}
+      className={classes.productContainer}
+    >
       <Grid item className={classes.productImgContainer}>
         <img src={`${image.mobile}`} className={classes.productImg} />
       </Grid>
@@ -18,7 +22,7 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
           <Typography className={classes.cartBtnText}>Add to Cart</Typography>
         </Button>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.descriptionContainer}>
         <Typography className={classes.category}>{category}</Typography>
         <Typography className={classes.name}>{name}</Typography>
         <Typography className={classes.price}>{`$${price}0`}</Typography>

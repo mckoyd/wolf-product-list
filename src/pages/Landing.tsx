@@ -31,7 +31,11 @@ const Landing: React.FC = () => {
       </Grid>
       <Grid item className={classes.cartContainer}>
         <Typography className={classes.cartTitle}>Your Cart (0)</Typography>
-        <Grid container className={classes.emptyCartImgContainer}>
+        <Grid
+          container
+          flexDirection="column"
+          className={classes.emptyCartImgContainer}
+        >
           <EmptyCartIcon />
           <Typography className={classes.emptyCartImgText}>
             Your added items will appear here
