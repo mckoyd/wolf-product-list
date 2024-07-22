@@ -22,12 +22,20 @@ const config: Configuration = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif|webp)$/i,
+        test: /\.(png|jpe?g|gif|pdf|webp)$/i,
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
           outputPath: "assets/images",
         },
+      },
+      {
+        test: /\.json5$/i,
+        loader: "json5-loader",
+        options: {
+          esModule: true,
+        },
+        type: "javascript/auto",
       },
       {
         test: /\.svg$/,

@@ -1,8 +1,10 @@
-import { GlobalStyles } from "@mui/material";
 import React from "react";
+import { GlobalStyles } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
-import { globalStyles } from "../styles/global.styles";
+
 import Landing from "./Landing";
+
+import { globalStyles } from "../styles/global.styles";
 
 const App: React.FC = () => {
   return (
