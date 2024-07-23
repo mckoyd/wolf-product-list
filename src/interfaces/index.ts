@@ -11,3 +11,9 @@ export interface IProduct {
   category: string;
   price: number;
 }
+
+export interface ICartProduct {
+  name: string;
+  quantity: number;
+  price: number;
+}
