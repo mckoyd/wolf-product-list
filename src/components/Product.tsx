@@ -26,7 +26,7 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
         setProductsInCart([...productsInCart, { name, quantity: 1, price }]);
         setProductQuantity(1);
       } else {
-        const cartProducts = [...productsInCart];
+        let cartProducts = [...productsInCart];
         let updatedQuantity;
         if (changeQuantity === "inc") {
           updatedQuantity = cartProducts[currentProductIndex].quantity + 1;
@@ -35,7 +35,9 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
         }
 
         if (updatedQuantity === 0) {
-          cartProducts.splice(currentProductIndex, 1);
+          cartProducts = cartProducts.filter(
+            (_, index) => currentProductIndex !== index
+          );
         } else {
           const updatedProduct = {
             ...cartProducts[currentProductIndex],
@@ -72,6 +74,10 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
             variant="outlined"
             className={classes.emptyCartBtn}
             onClick={() => handleCartBtn()}
+            disableRipple
+            disableFocusRipple
+            disableElevation
+            disableTouchRipple
           >
             <AddToCartIcon />
             <Typography className={classes.emptyCartBtnText}>
@@ -79,7 +85,14 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
             </Typography>
           </Button>
         ) : (
-          <Button variant="contained" className={classes.cartBtn}>
+          <Button
+            variant="contained"
+            className={classes.cartBtn}
+            disableRipple
+            disableFocusRipple
+            disableElevation
+            disableTouchRipple
+          >
             <IncrementIcon onClick={() => handleCartBtn("inc")} />
             <Typography className={classes.cartBtnText}>
               {productQuantity}
