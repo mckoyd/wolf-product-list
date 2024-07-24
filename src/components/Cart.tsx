@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { Grid, Typography } from "@mui/material";
 
 import { ReactComponent as EmptyCartIcon } from "../assets/images/illustration-empty-cart.svg";
-import { ReactComponent as RemoveItemIcon } from "../assets/images/icon-remove-item.svg";
+import { ReactComponent as CarbonNeutralImg } from "../assets/images/icon-carbon-neutral.svg";
 import { useCartStyles } from "../styles/cart.styles";
 import { productsInCartState } from "../state/productsInCart";
 import { ICartProduct } from "../interfaces";
@@ -78,6 +78,29 @@ const Cart: React.FC = () => {
                     0
                   )
                   .toFixed(2)}
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            gap={"0.5em"}
+            flexWrap={"nowrap"}
+            className={classes.carbonNeutralContainer}
+          >
+            <Grid item>
+              <CarbonNeutralImg className={classes.carbonNeutralImg} />
+            </Grid>
+            <Grid item>
+              <Typography className={classes.carbonNeutralText}>
+                This is a{" "}
+                <span className={classes.carbonNeutralTextBold}>
+                  carbon-neutral
+                </span>{" "}
+                delivery
               </Typography>
             </Grid>
           </Grid>

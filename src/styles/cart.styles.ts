@@ -62,4 +62,18 @@ export const useCartStyles = tss.create(({ theme }) => ({
   orderTotal: {
     ...(theme.typography.textPreset2 as CSSProperties),
   },
+  carbonNeutralContainer: {
+    background: theme.palette.common.rose50,
+  },
+  carbonNeutralImg: {
+    width: "1.25em",
+    height: "1.25em",
+  },
+  carbonNeutralText: {
+    ...(theme.typography.textPreset4 as CSSProperties),
+    textAlign: "center",
+  },
+  carbonNeutralTextBold: {
+    ...(theme.typography.textPreset4Bold as CSSProperties),
+  },
 }));
