@@ -54,4 +54,12 @@ export const useCartStyles = tss.create(({ theme }) => ({
     height: "1.25em",
     padding: "0.15em",
   },
+
+  orderTotalTitle: {
+    ...(theme.typography.textPreset4 as CSSProperties),
+  },
+
+  orderTotal: {
+    ...(theme.typography.textPreset2 as CSSProperties),
+  },
 }));

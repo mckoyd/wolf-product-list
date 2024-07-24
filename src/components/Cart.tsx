@@ -15,6 +15,7 @@ const Cart: React.FC = () => {
   const productsInCart = useRecoilValue(productsInCartState);
 
   const [totalProducts, setTotalProducts] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     setTotalProducts(
@@ -57,6 +58,29 @@ const Cart: React.FC = () => {
               />
             )
           )}
+          <Grid
+            container
+            justifyContent={"space-between"}
+            alignItems={"center"}
+          >
+            <Grid item>
+              <Typography className={classes.orderTotalTitle}>
+                Order Total
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography className={classes.orderTotal}>
+                $
+                {productsInCart
+                  .reduce(
+                    (total: number, { quantity, price }: ICartProduct) =>
+                      quantity * price + total,
+                    0
+                  )
+                  .toFixed(2)}
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
       )}
     </Grid>
