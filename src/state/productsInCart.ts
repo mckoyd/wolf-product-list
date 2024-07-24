@@ -5,3 +5,8 @@ export const productsInCartState = atom({
   key: "productsInCartState",
   default: [] as ICartProduct[],
 });
+
+export const removedItemNameState = atom({
+  key: "removedItemNameState",
+  default: "" as string,
+});

@@ -4,9 +4,31 @@ import { Divider, Grid, Typography } from "@mui/material";
 import { useCartItemStyles } from "../styles/cartItem.styles";
 import { ICartProduct } from "../interfaces";
 import { ReactComponent as RemoveItemIcon } from "../assets/images/icon-remove-item.svg";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import {
+  productsInCartState,
+  removedItemNameState,
+} from "../state/productsInCart";
 
-const CartItem: React.FC<ICartProduct> = ({ name, quantity, price }) => {
+const CartItem: React.FC<ICartProduct> = ({
+  name,
+  quantity,
+  price,
+  productIndex,
+}) => {
   const { classes } = useCartItemStyles();
+  const [productsInCart, setProductsInCart] =
+    useRecoilState(productsInCartState);
+
+  const setRemoveItemName = useSetRecoilState(removedItemNameState);
+
+  const handleRemoveItem = () => {
+    setRemoveItemName(name);
+    setProductsInCart((currentProducts) => {
+      let cartProducts = [...currentProducts];
+      return cartProducts.filter((product, index) => product.name !== name);
+    });
+  };
 
   return (
     <Grid container direction={"column"} gap={"1em"}>
@@ -38,7 +60,10 @@ const CartItem: React.FC<ICartProduct> = ({ name, quantity, price }) => {
           </Grid>
         </Grid>
         <Grid item>
-          <RemoveItemIcon className={classes.removeIcon} />
+          <RemoveItemIcon
+            className={classes.removeIcon}
+            onClick={handleRemoveItem}
+          />
         </Grid>
       </Grid>
       <Divider className={classes.itemDivider} />

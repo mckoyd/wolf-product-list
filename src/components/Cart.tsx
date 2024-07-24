@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Grid, Typography } from "@mui/material";
 
 import { ReactComponent as EmptyCartIcon } from "../assets/images/illustration-empty-cart.svg";
@@ -12,8 +12,7 @@ import CartItem from "./CartItem";
 const Cart: React.FC = () => {
   const { classes } = useCartStyles();
 
-  const [productsInCart, setProductsInCart] =
-    useRecoilState(productsInCartState);
+  const productsInCart = useRecoilValue(productsInCartState);
 
   const [totalProducts, setTotalProducts] = useState<number>(0);
 
@@ -49,7 +48,13 @@ const Cart: React.FC = () => {
         <Grid container direction={"column"} gap={"1em"}>
           {productsInCart.map(
             ({ name, quantity, price }: ICartProduct, index: number) => (
-              <CartItem name={name} quantity={quantity} price={price} />
+              <CartItem
+                name={name}
+                quantity={quantity}
+                price={price}
+                productIndex={index}
+                key={`${name}-${index}`}
+              />
             )
           )}
         </Grid>

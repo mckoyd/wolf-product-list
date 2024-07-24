@@ -6,7 +6,6 @@ import Product from "../components/Product";
 
 import { IProduct } from "../interfaces";
 import { useLandingStyles } from "../styles/landing.styles";
-import { ReactComponent as EmptyCartIcon } from "../assets/images/illustration-empty-cart.svg";
 import Cart from "../components/Cart";
 
 const Landing: React.FC = () => {

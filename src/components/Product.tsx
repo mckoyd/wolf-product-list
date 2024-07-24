@@ -1,13 +1,16 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Grid, Typography } from "@mui/material";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { IProduct } from "../interfaces";
 import { useProductStyles } from "../styles/product.styles";
 import { ReactComponent as AddToCartIcon } from "../assets/images/icon-add-to-cart.svg";
 import { ReactComponent as IncrementIcon } from "../assets/images/icon-increment-quantity.svg";
 import { ReactComponent as DecrementIcon } from "../assets/images/icon-decrement-quantity.svg";
-import { productsInCartState } from "../state/productsInCart";
+import {
+  productsInCartState,
+  removedItemNameState,
+} from "../state/productsInCart";
 
 const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
   const { classes, cx } = useProductStyles();
@@ -15,14 +18,16 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
   const [productsInCart, setProductsInCart] =
     useRecoilState(productsInCartState);
   const [productQuantity, setProductQuantity] = useState<number>(0);
+  const [removeItemName, setRemoveItemName] =
+    useRecoilState(removedItemNameState);
 
   const handleCartBtn = useCallback(
     (changeQuantity?: string) => {
       const currentProductIndex = productsInCart.findIndex(
-        (cart) => cart.name === name
+        (product) => product.name === name
       );
 
-      if (currentProductIndex < 0) {
+      if (currentProductIndex < 0 && changeQuantity === "inc") {
         setProductsInCart([...productsInCart, { name, quantity: 1, price }]);
         setProductQuantity(1);
       } else {
@@ -30,8 +35,10 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
         let updatedQuantity;
         if (changeQuantity === "inc") {
           updatedQuantity = cartProducts[currentProductIndex].quantity + 1;
-        } else {
+        } else if (changeQuantity === "dec") {
           updatedQuantity = cartProducts[currentProductIndex].quantity - 1;
+        } else {
+          return;
         }
 
         if (updatedQuantity === 0) {
@@ -53,6 +60,13 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
     [productsInCart]
   );
 
+  useEffect(() => {
+    if (removeItemName === name) {
+      setProductQuantity(0);
+      setRemoveItemName("");
+    }
+  }, [removeItemName]);
+
   return (
     <Grid
       container
@@ -73,7 +87,7 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
           <Button
             variant="outlined"
             className={classes.emptyCartBtn}
-            onClick={() => handleCartBtn()}
+            onClick={() => handleCartBtn("inc")}
             disableRipple
             disableFocusRipple
             disableElevation
