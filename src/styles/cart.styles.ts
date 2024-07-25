@@ -76,4 +76,19 @@ export const useCartStyles = tss.create(({ theme }) => ({
   carbonNeutralTextBold: {
     ...(theme.typography.textPreset4Bold as CSSProperties),
   },
+
+  confirmOrderBtn: {
+    background: theme.palette.common.red,
+    borderRadius: "18.5em",
+    textTransform: "none",
+    padding: "1em 2em",
+    "&:hover": {
+      background: theme.palette.common.red,
+    },
+  },
+
+  confirmOrderBtnText: {
+    ...(theme.typography.textPreset3 as CSSProperties),
+    color: theme.palette.common.white,
+  },
 }));

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { Grid, Typography } from "@mui/material";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { Button, Grid, Typography } from "@mui/material";
 
 import { ReactComponent as EmptyCartIcon } from "../assets/images/illustration-empty-cart.svg";
 import { ReactComponent as CarbonNeutralImg } from "../assets/images/icon-carbon-neutral.svg";
 import { useCartStyles } from "../styles/cart.styles";
-import { productsInCartState } from "../state/productsInCart";
+import {
+  productsInCartState,
+  showConfirmationModalState,
+} from "../state/productsInCart";
 import { ICartProduct } from "../interfaces";
 import CartItem from "./CartItem";
 
@@ -13,6 +16,9 @@ const Cart: React.FC = () => {
   const { classes } = useCartStyles();
 
   const productsInCart = useRecoilValue(productsInCartState);
+  const setShowConfirmationModal = useSetRecoilState(
+    showConfirmationModalState
+  );
 
   const [totalProducts, setTotalProducts] = useState<number>(0);
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -48,11 +54,12 @@ const Cart: React.FC = () => {
       ) : (
         <Grid container direction={"column"} gap={"1em"}>
           {productsInCart.map(
-            ({ name, quantity, price }: ICartProduct, index: number) => (
+            ({ name, quantity, price, image }: ICartProduct, index: number) => (
               <CartItem
                 name={name}
                 quantity={quantity}
                 price={price}
+                image={image}
                 productIndex={index}
                 key={`${name}-${index}`}
               />
@@ -103,6 +110,22 @@ const Cart: React.FC = () => {
                 delivery
               </Typography>
             </Grid>
+          </Grid>
+
+          <Grid item>
+            <Button
+              variant="contained"
+              className={classes.confirmOrderBtn}
+              fullWidth
+              disableElevation
+              disableFocusRipple
+              disableRipple
+              onClick={() => setShowConfirmationModal(true)}
+            >
+              <Typography className={classes.confirmOrderBtnText}>
+                Confirm Order
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
       )}

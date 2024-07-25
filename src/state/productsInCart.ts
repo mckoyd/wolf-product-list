@@ -10,3 +10,8 @@ export const removedItemNameState = atom({
   key: "removedItemNameState",
   default: "" as string,
 });
+
+export const showConfirmationModalState = atom({
+  key: "showConfirmationStateModal",
+  default: false,
+});

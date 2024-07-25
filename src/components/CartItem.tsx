@@ -14,6 +14,7 @@ const CartItem: React.FC<ICartProduct> = ({
   name,
   quantity,
   price,
+  image,
   productIndex,
 }) => {
   const { classes } = useCartItemStyles();

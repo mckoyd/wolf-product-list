@@ -16,5 +16,6 @@ export interface ICartProduct {
   name: string;
   quantity: number;
   price: number;
+  image: IImage;
   productIndex?: number;
 }

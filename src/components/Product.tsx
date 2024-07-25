@@ -28,7 +28,10 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
       );
 
       if (currentProductIndex < 0 && changeQuantity === "inc") {
-        setProductsInCart([...productsInCart, { name, quantity: 1, price }]);
+        setProductsInCart([
+          ...productsInCart,
+          { name, quantity: 1, price, image },
+        ]);
         setProductQuantity(1);
       } else {
         let cartProducts = [...productsInCart];
