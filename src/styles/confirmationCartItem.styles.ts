@@ -45,4 +45,16 @@ export const useConfirmationCartItemStyles = tss.create(({ theme }) => ({
     width: "100%",
     color: theme.palette.common.rose100,
   },
+  orderTotalContainer: {
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  orderTotalText: {
+    ...(theme.typography.textPreset4 as CSSProperties),
+    fontSize: "0.875em",
+  },
+  orderTotal: {
+    ...(theme.typography.textPreset2 as CSSProperties),
+    fontSize: "1.5em",
+  },
 }));

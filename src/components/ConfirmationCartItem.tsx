@@ -2,6 +2,8 @@ import React from "react";
 import { useConfirmationCartItemStyles } from "../styles/confirmationCartItem.styles";
 import { Divider, Grid, Typography } from "@mui/material";
 import { ICartProduct } from "../interfaces";
+import { useRecoilValue } from "recoil";
+import { productsInCartState } from "../state/productsInCart";
 
 const ConfirmationCartItem: React.FC<ICartProduct> = ({
   image,
@@ -10,6 +12,8 @@ const ConfirmationCartItem: React.FC<ICartProduct> = ({
   price,
 }) => {
   const { classes } = useConfirmationCartItemStyles();
+
+  const productsInCart = useRecoilValue(productsInCartState);
   return (
     <>
       <Grid container className={classes.cartItemContainer}>
@@ -47,6 +51,27 @@ const ConfirmationCartItem: React.FC<ICartProduct> = ({
         </Grid>
       </Grid>
       <Divider className={classes.itemDivider} />
+      <Grid item>
+        <Grid container className={classes.orderTotalContainer}>
+          <Grid item>
+            <Typography className={classes.orderTotalText}>
+              Order Total
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography className={classes.orderTotal}>
+              $
+              {productsInCart
+                .reduce(
+                  (total: number, { quantity, price }: ICartProduct) =>
+                    quantity * price + total,
+                  0
+                )
+                .toFixed(2)}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
     </>
   );
 };

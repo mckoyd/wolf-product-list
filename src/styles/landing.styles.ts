@@ -95,4 +95,9 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     padding: "1.5em",
     borderRadius: "0.5em",
   },
+  orderTotal: {
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "1.5em",
+  },
 }));

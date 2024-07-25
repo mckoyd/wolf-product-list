@@ -11,7 +11,7 @@ import {
 import products from "../data.json";
 import Product from "../components/Product";
 
-import { IProduct } from "../interfaces";
+import { ICartProduct, IProduct } from "../interfaces";
 import { useLandingStyles } from "../styles/landing.styles";
 import Cart from "../components/Cart";
 import { useRecoilState, useRecoilValue } from "recoil";
