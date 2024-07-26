@@ -74,7 +74,17 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     width: "100%",
     borderRadius: "0.75em 0.75em 0 0",
     padding: "2.5em 1.5em",
-    overflow: "scroll",
+    overflowY: "scroll",
+    [theme.breakpoints.up("sm")]: {
+      borderRadius: "0.875em",
+      margin: "auto 1.5em",
+    },
+    [theme.breakpoints.up("lg")]: {
+      margin: "auto 25em",
+    },
+    [theme.breakpoints.up("xl")]: {
+      margin: "auto 35em",
+    },
   },
   modalContentContainer: {
     gap: "1em",
@@ -95,10 +105,18 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     padding: "1.5em",
     borderRadius: "0.5em",
   },
-  orderTotal: {
+  orderTotalContainer: {
     justifyContent: "space-between",
     alignItems: "center",
     gap: "1.5em",
+  },
+  orderTotalText: {
+    ...(theme.typography.textPreset4 as CSSProperties),
+    fontSize: "0.875em",
+  },
+  orderTotal: {
+    ...(theme.typography.textPreset2 as CSSProperties),
+    fontSize: "1.5em",
   },
   startNewOrderBtn: {
     background: theme.palette.common.red,

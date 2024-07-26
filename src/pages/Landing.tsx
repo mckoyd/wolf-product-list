@@ -12,7 +12,7 @@ import {
 import products from "../data.json";
 import Product from "../components/Product";
 
-import { IProduct } from "../interfaces";
+import { ICartProduct, IProduct } from "../interfaces";
 import { useLandingStyles } from "../styles/landing.styles";
 import Cart from "../components/Cart";
 import { useRecoilState, useSetRecoilState } from "recoil";
@@ -44,7 +44,7 @@ const Landing: React.FC = () => {
 
   return (
     <Grid container className={classes.largeLandingContainer}>
-      <Grid item lg={6}>
+      <Grid item lg={8}>
         <Grid container className={classes.landingContainer}>
           <Grid item className={classes.titleContainer}>
             <Typography className={classes.title}>Desserts</Typography>
@@ -86,8 +86,7 @@ const Landing: React.FC = () => {
             </Grid>
             <Grid item>
               <Typography className={classes.orderConfirmedTitle}>
-                Order <br />
-                Confirmed
+                Order Confirmed
               </Typography>
               <Typography className={classes.orderConfirmedSubtitle}>
                 We hope you enjoy your food!
@@ -112,6 +111,7 @@ const Landing: React.FC = () => {
                 )}
               </Grid>
             </Grid>
+
             <Grid item>
               <Button
                 className={classes.startNewOrderBtn}

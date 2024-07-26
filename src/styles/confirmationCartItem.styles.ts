@@ -22,7 +22,6 @@ export const useConfirmationCartItemStyles = tss.create(({ theme }) => ({
     textOverflow: "ellipsis",
     overflow: "hidden",
     whiteSpace: "nowrap",
-    width: "90%",
   },
   cartItemDescription: {
     gap: "0.5em",

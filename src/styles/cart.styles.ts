@@ -64,6 +64,9 @@ export const useCartStyles = tss.create(({ theme }) => ({
   },
   carbonNeutralContainer: {
     background: theme.palette.common.rose50,
+    [theme.breakpoints.up("sm")]: {
+      padding: "1.5em",
+    },
   },
   carbonNeutralImg: {
     width: "1.25em",
