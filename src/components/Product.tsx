@@ -68,6 +68,10 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
       setProductQuantity(0);
       setRemoveItemName("");
     }
+    if (removeItemName === "all") {
+      setProductQuantity(0);
+      setRemoveItemName("");
+    }
   }, [removeItemName]);
 
   return (

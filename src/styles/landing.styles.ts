@@ -100,4 +100,18 @@ export const useLandingStyles = tss.create(({ theme }) => ({
     alignItems: "center",
     gap: "1.5em",
   },
+  startNewOrderBtn: {
+    background: theme.palette.common.red,
+    borderRadius: "18.5em",
+    textTransform: "none",
+    padding: "1em 2em",
+    "&:hover": {
+      background: theme.palette.common.red,
+    },
+  },
+  startNewOrderBtnText: {
+    ...(theme.typography.textPreset3 as CSSProperties),
+    color: theme.palette.common.white,
+    fontSize: "1em",
+  },
 }));

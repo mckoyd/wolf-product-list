@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
+  Button,
   Grid,
   Modal,
   Typography,
@@ -11,12 +12,13 @@ import {
 import products from "../data.json";
 import Product from "../components/Product";
 
-import { ICartProduct, IProduct } from "../interfaces";
+import { IProduct } from "../interfaces";
 import { useLandingStyles } from "../styles/landing.styles";
 import Cart from "../components/Cart";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   productsInCartState,
+  removedItemNameState,
   showConfirmationModalState,
 } from "../state/productsInCart";
 import { ReactComponent as OrderConfirmedIcon } from "../assets/images/icon-order-confirmed.svg";
@@ -30,8 +32,15 @@ const Landing: React.FC = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useRecoilState(
     showConfirmationModalState
   );
+  const [productsInCart, setProductsInCart] =
+    useRecoilState(productsInCartState);
+  const setRemoveItemName = useSetRecoilState(removedItemNameState);
 
-  const productsInCart = useRecoilValue(productsInCartState);
+  const handleStartNewOrderBtn = () => {
+    setProductsInCart([]);
+    setShowConfirmationModal(false);
+    setRemoveItemName("all");
+  };
 
   return (
     <Grid container className={classes.largeLandingContainer}>
@@ -102,6 +111,21 @@ const Landing: React.FC = () => {
                   )
                 )}
               </Grid>
+            </Grid>
+            <Grid item>
+              <Button
+                className={classes.startNewOrderBtn}
+                fullWidth
+                disableElevation
+                disableFocusRipple
+                disableRipple
+                disableTouchRipple
+                onClick={handleStartNewOrderBtn}
+              >
+                <Typography className={classes.startNewOrderBtnText}>
+                  Start New Order
+                </Typography>
+              </Button>
             </Grid>
           </Grid>
         </Box>
