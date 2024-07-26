@@ -8,21 +8,23 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import products from "../data.json";
 import Product from "../components/Product";
-
-import { ICartProduct, IProduct } from "../interfaces";
-import { useLandingStyles } from "../styles/landing.styles";
 import Cart from "../components/Cart";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import ConfirmationCartItem from "../components/ConfirmationCartItem";
+import Header from "../components/Header";
+
+import { IProduct } from "../interfaces";
+import { useLandingStyles } from "../styles/landing.styles";
 import {
   productsInCartState,
   removedItemNameState,
   showConfirmationModalState,
 } from "../state/productsInCart";
 import { ReactComponent as OrderConfirmedIcon } from "../assets/images/icon-order-confirmed.svg";
-import ConfirmationCartItem from "../components/ConfirmationCartItem";
+import ProductsContainer from "../components/ProductsContainer";
 
 const Landing: React.FC = () => {
   const theme = useTheme();
@@ -46,22 +48,8 @@ const Landing: React.FC = () => {
     <Grid container className={classes.largeLandingContainer}>
       <Grid item lg={8}>
         <Grid container className={classes.landingContainer}>
-          <Grid item className={classes.titleContainer}>
-            <Typography className={classes.title}>Desserts</Typography>
-          </Grid>
-          <Grid item className={classes.productsContainer}>
-            {products.map(
-              ({ image, name, category, price }: IProduct, index: number) => (
-                <Product
-                  image={image}
-                  name={name}
-                  category={category}
-                  price={price}
-                  key={`${name}-${index}`}
-                />
-              )
-            )}
-          </Grid>
+          <Header />
+          <ProductsContainer />
           {!matchesLG && <Cart />}
         </Grid>
       </Grid>

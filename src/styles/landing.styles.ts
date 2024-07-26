@@ -21,23 +21,6 @@ export const useLandingStyles = tss.create(({ theme }) => ({
       padding: "0",
     },
   },
-  titleContainer: {
-    justifySelf: "flex-start",
-  },
-  title: {
-    ...(theme.typography.textPreset1 as CSSProperties),
-    fontSize: "2.5em",
-  },
-  productsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1.5em",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "space-between",
-    },
-  },
   cartContainer: {
     display: "flex",
     flexDirection: "column",
