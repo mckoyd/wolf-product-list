@@ -98,7 +98,7 @@ const Cart: React.FC = () => {
             flexWrap={"nowrap"}
             className={classes.carbonNeutralContainer}
           >
-            <Grid item>
+            <Grid item display={"flex"} alignItems={"center"}>
               <CarbonNeutralImg className={classes.carbonNeutralImg} />
             </Grid>
             <Grid item>

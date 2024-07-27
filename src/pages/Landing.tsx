@@ -10,8 +10,6 @@ import {
 } from "@mui/material";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-import products from "../data.json";
-import Product from "../components/Product";
 import Cart from "../components/Cart";
 import ConfirmationCartItem from "../components/ConfirmationCartItem";
 import Header from "../components/Header";

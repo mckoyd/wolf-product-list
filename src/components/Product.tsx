@@ -11,6 +11,7 @@ import {
   productsInCartState,
   removedItemNameState,
 } from "../state/productsInCart";
+import ProductImg from "./ProductImg";
 
 const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
   const { classes, cx } = useProductStyles();
@@ -80,15 +81,7 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
       flexDirection={"column"}
       className={classes.productContainer}
     >
-      <Grid item className={classes.productImgContainer}>
-        <img
-          src={`${image.mobile}`}
-          className={cx(
-            classes.productImg,
-            productQuantity > 0 && classes.selectedProductImg
-          )}
-        />
-      </Grid>
+      <ProductImg image={image} productQuantity={productQuantity} />
       <Grid item className={classes.cartBtnContainer}>
         {productQuantity === 0 ? (
           <Button

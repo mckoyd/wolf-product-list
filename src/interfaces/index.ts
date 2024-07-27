@@ -12,6 +12,11 @@ export interface IProduct {
   price: number;
 }
 
+export interface IProductImg {
+  image: IImage;
+  productQuantity: number;
+}
+
 export interface ICartProduct {
   name: string;
   quantity: number;
