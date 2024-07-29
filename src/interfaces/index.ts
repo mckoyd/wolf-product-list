@@ -24,3 +24,11 @@ export interface ICartProduct {
   image: IImage;
   productIndex?: number;
 }
+
+export interface IAddToCartBtn {
+  productQuantity: number;
+  setProductQuantity: (quantity: number) => void;
+  name: string;
+  price: number;
+  image: IImage;
+}

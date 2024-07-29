@@ -1,4 +1,5 @@
 import React from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   Box,
   Button,
@@ -8,32 +9,32 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useRecoilState, useSetRecoilState } from "recoil";
 
-import Cart from "../components/Cart";
-import ConfirmationCartItem from "../components/ConfirmationCartItem";
-import Header from "../components/Header";
-
-import { IProduct } from "../interfaces";
-import { useLandingStyles } from "../styles/landing.styles";
 import {
   productsInCartState,
   removedItemNameState,
   showConfirmationModalState,
 } from "../state/productsInCart";
 import { ReactComponent as OrderConfirmedIcon } from "../assets/images/icon-order-confirmed.svg";
+import { useLandingStyles } from "../styles/landing.styles";
+
+import Cart from "../components/Cart";
+import ConfirmationCartItem from "../components/ConfirmationCartItem";
+import Header from "../components/Header";
 import ProductsContainer from "../components/ProductsContainer";
 
 const Landing: React.FC = () => {
   const theme = useTheme();
-  const { classes } = useLandingStyles();
   const matchesLG = useMediaQuery(theme.breakpoints.up("lg"));
 
+  const { classes } = useLandingStyles();
+
+  const [productsInCart, setProductsInCart] =
+    useRecoilState(productsInCartState);
   const [showConfirmationModal, setShowConfirmationModal] = useRecoilState(
     showConfirmationModalState
   );
-  const [productsInCart, setProductsInCart] =
-    useRecoilState(productsInCartState);
+
   const setRemoveItemName = useSetRecoilState(removedItemNameState);
 
   const handleStartNewOrderBtn = () => {

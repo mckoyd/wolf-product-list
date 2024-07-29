@@ -8,6 +8,7 @@ import { useProductsContainerStyles } from "../styles/productsContainer";
 
 const ProductsContainer: React.FC = () => {
   const { classes } = useProductsContainerStyles();
+
   return (
     <Grid item className={classes.productsContainer}>
       {products.map(

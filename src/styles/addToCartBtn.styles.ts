@@ -1,13 +1,7 @@
 import { CSSProperties } from "react";
 import { tss } from "tss-react/mui";
 
-export const useProductStyles = tss.create(({ theme }) => ({
-  productContainer: {
-    [theme.breakpoints.up("sm")]: {
-      width: "30%",
-      gap: "1em",
-    },
-  },
+export const useAddToCartBtnStyles = tss.create(({ theme }) => ({
   cartBtnContainer: {
     display: "flex",
     justifyContent: "center",
@@ -27,11 +21,17 @@ export const useProductStyles = tss.create(({ theme }) => ({
       background: theme.palette.common.white,
       border: `1px solid ${theme.palette.common.rose400}`,
     },
+    [theme.breakpoints.up("sm")]: {
+      width: "12em",
+    },
   },
 
   emptyCartBtnText: {
     ...(theme.typography.textPreset4Bold as CSSProperties),
     textTransform: "none",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1em",
+    },
   },
   cartBtn: {
     background: theme.palette.common.red,
@@ -45,5 +45,7 @@ export const useProductStyles = tss.create(({ theme }) => ({
       background: theme.palette.common.red,
     },
   },
-  cartBtnText: {},
+  cartBtnText: {
+    color: theme.palette.common.white,
+  },
 }));
