@@ -10,7 +10,7 @@ export const useCartStyles = tss.create(({ theme }) => ({
     background: theme.palette.common.white,
     borderRadius: "0.75em",
     [theme.breakpoints.up("lg")]: {
-      height: "18.75em",
+      height: "fit-content",
     },
   },
   cartTitle: {

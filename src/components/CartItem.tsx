@@ -48,7 +48,7 @@ const CartItem: React.FC<ICartProduct> = ({
                 </Grid>
                 <Grid item>
                   <Typography className={classes.unitPrice}>
-                    @${price}0
+                    @${price.toFixed(2)}
                   </Typography>
                 </Grid>
                 <Grid item>

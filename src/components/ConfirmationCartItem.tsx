@@ -51,27 +51,6 @@ const ConfirmationCartItem: React.FC<ICartProduct> = ({
         </Grid>
       </Grid>
       <Divider className={classes.itemDivider} />
-      <Grid item>
-        <Grid container className={classes.orderTotalContainer}>
-          <Grid item>
-            <Typography className={classes.orderTotalText}>
-              Order Total
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography className={classes.orderTotal}>
-              $
-              {productsInCart
-                .reduce(
-                  (total: number, { quantity, price }: ICartProduct) =>
-                    quantity * price + total,
-                  0
-                )
-                .toFixed(2)}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
     </>
   );
 };

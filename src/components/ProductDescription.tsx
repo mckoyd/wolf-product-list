@@ -11,7 +11,7 @@ const ProductDescription: React.FC<
     <Grid item className={classes.descriptionContainer}>
       <Typography className={classes.category}>{category}</Typography>
       <Typography className={classes.name}>{name}</Typography>
-      <Typography className={classes.price}>{`$${price}0`}</Typography>
+      <Typography className={classes.price}>${price.toFixed(2)}</Typography>
     </Grid>
   );
 };

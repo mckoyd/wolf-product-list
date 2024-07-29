@@ -1,47 +1,18 @@
 import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import {
-  Box,
-  Button,
-  Grid,
-  Modal,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 
-import {
-  productsInCartState,
-  removedItemNameState,
-  showConfirmationModalState,
-} from "../state/productsInCart";
-import { ReactComponent as OrderConfirmedIcon } from "../assets/images/icon-order-confirmed.svg";
 import { useLandingStyles } from "../styles/landing.styles";
 
 import Cart from "../components/Cart";
-import ConfirmationCartItem from "../components/ConfirmationCartItem";
 import Header from "../components/Header";
 import ProductsContainer from "../components/ProductsContainer";
+import ConfirmationModal from "../components/ConfirmationModal";
 
 const Landing: React.FC = () => {
   const theme = useTheme();
   const matchesLG = useMediaQuery(theme.breakpoints.up("lg"));
 
   const { classes } = useLandingStyles();
-
-  const [productsInCart, setProductsInCart] =
-    useRecoilState(productsInCartState);
-  const [showConfirmationModal, setShowConfirmationModal] = useRecoilState(
-    showConfirmationModalState
-  );
-
-  const setRemoveItemName = useSetRecoilState(removedItemNameState);
-
-  const handleStartNewOrderBtn = () => {
-    setProductsInCart([]);
-    setShowConfirmationModal(false);
-    setRemoveItemName("all");
-  };
 
   return (
     <Grid container className={classes.largeLandingContainer}>
@@ -55,68 +26,7 @@ const Landing: React.FC = () => {
 
       {matchesLG && <Cart />}
 
-      <Modal
-        open={showConfirmationModal}
-        onClose={() => setShowConfirmationModal(false)}
-        aria-labelledby="confirmation-modal"
-        aria-describedby="cart-items"
-        className={classes.modal}
-      >
-        <Box className={classes.modalContentBox}>
-          <Grid
-            container
-            direction={"column"}
-            className={classes.modalContentContainer}
-          >
-            <Grid item>
-              <OrderConfirmedIcon />
-            </Grid>
-            <Grid item>
-              <Typography className={classes.orderConfirmedTitle}>
-                Order Confirmed
-              </Typography>
-              <Typography className={classes.orderConfirmedSubtitle}>
-                We hope you enjoy your food!
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Grid
-                container
-                direction={"column"}
-                className={classes.cartItems}
-              >
-                {productsInCart.map(
-                  ({ image, name, quantity, price }, index) => (
-                    <ConfirmationCartItem
-                      key={index}
-                      image={image}
-                      name={name}
-                      quantity={quantity}
-                      price={price}
-                    />
-                  )
-                )}
-              </Grid>
-            </Grid>
-
-            <Grid item>
-              <Button
-                className={classes.startNewOrderBtn}
-                fullWidth
-                disableElevation
-                disableFocusRipple
-                disableRipple
-                disableTouchRipple
-                onClick={handleStartNewOrderBtn}
-              >
-                <Typography className={classes.startNewOrderBtnText}>
-                  Start New Order
-                </Typography>
-              </Button>
-            </Grid>
-          </Grid>
-        </Box>
-      </Modal>
+      <ConfirmationModal />
     </Grid>
   );
 };
