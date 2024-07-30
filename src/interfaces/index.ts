@@ -15,6 +15,7 @@ export interface IProduct {
 export interface IProductImg {
   image: IImage;
   productQuantity: number;
+  name: string;
 }
 
 export interface ICartProduct {

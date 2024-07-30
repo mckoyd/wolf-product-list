@@ -21,6 +21,7 @@ const ConfirmationCartItem: React.FC<ICartProduct> = ({
           <img
             src={`${image.thumbnail}`}
             className={classes.cartItemThumbnailImage}
+            alt={name}
           />
         </Grid>
         <Grid item className={classes.cartItemDetailsContainer}>

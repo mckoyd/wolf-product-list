@@ -4,7 +4,11 @@ import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import { IProductImg } from "../interfaces";
 import { useProductImgStyles } from "../styles/productImg.styles";
 
-const ProductImg: React.FC<IProductImg> = ({ image, productQuantity }) => {
+const ProductImg: React.FC<IProductImg> = ({
+  image,
+  productQuantity,
+  name,
+}) => {
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.up("sm"));
   const matchesLG = useMediaQuery(theme.breakpoints.up("lg"));
@@ -21,6 +25,7 @@ const ProductImg: React.FC<IProductImg> = ({ image, productQuantity }) => {
           classes.productImg,
           productQuantity > 0 && classes.selectedProductImg
         )}
+        alt={name}
       />
     </Grid>
   );

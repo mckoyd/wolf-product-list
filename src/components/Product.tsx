@@ -19,7 +19,7 @@ const Product: React.FC<IProduct> = ({ image, name, category, price }) => {
       flexDirection={"column"}
       className={classes.productContainer}
     >
-      <ProductImg image={image} productQuantity={productQuantity} />
+      <ProductImg image={image} productQuantity={productQuantity} name={name} />
       <AddToCartBtn
         productQuantity={productQuantity}
         setProductQuantity={setProductQuantity}
