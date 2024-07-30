@@ -91,7 +91,7 @@ const AddToCartBtn: React.FC<IAddToCartBtn> = ({
         {productQuantity === 0 && (
           <span className={classes.emptyCartBtnSpan}>
             <AddToCartIcon />
-            <Typography className={classes.emptyCartBtnText}>
+            <Typography component="span" className={classes.emptyCartBtnText}>
               Add to Cart
             </Typography>
           </span>
@@ -100,7 +100,7 @@ const AddToCartBtn: React.FC<IAddToCartBtn> = ({
         {productQuantity > 0 && (
           <span className={classes.cartBtnSpan}>
             <IncrementIcon onClick={() => handleCartBtn("inc")} />
-            <Typography className={classes.cartBtnText}>
+            <Typography component="span" className={classes.cartBtnText}>
               {productQuantity}
             </Typography>
             <DecrementIcon onClick={() => handleCartBtn("dec")} />
