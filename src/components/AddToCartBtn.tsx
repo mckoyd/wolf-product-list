@@ -89,22 +89,22 @@ const AddToCartBtn: React.FC<IAddToCartBtn> = ({
         onClick={() => productQuantity === 0 && handleCartBtn("inc")}
       >
         {productQuantity === 0 && (
-          <>
+          <span className={classes.emptyCartBtnSpan}>
             <AddToCartIcon />
             <Typography className={classes.emptyCartBtnText}>
               Add to Cart
             </Typography>
-          </>
+          </span>
         )}
 
         {productQuantity > 0 && (
-          <>
+          <span className={classes.cartBtnSpan}>
             <IncrementIcon onClick={() => handleCartBtn("inc")} />
             <Typography className={classes.cartBtnText}>
               {productQuantity}
             </Typography>
             <DecrementIcon onClick={() => handleCartBtn("dec")} />
-          </>
+          </span>
         )}
       </Button>
     </Grid>

@@ -26,6 +26,13 @@ export const useAddToCartBtnStyles = tss.create(({ theme }) => ({
     },
   },
 
+  emptyCartBtnSpan: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "0.5em",
+  },
   emptyCartBtnText: {
     ...(theme.typography.textPreset4Bold as CSSProperties),
     textTransform: "none",
@@ -44,6 +51,13 @@ export const useAddToCartBtnStyles = tss.create(({ theme }) => ({
     "&:hover": {
       background: theme.palette.common.red,
     },
+  },
+  cartBtnSpan: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+    gap: "0.5em",
   },
   cartBtnText: {
     color: theme.palette.common.white,
